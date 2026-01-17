@@ -17,3 +17,9 @@ In order to launch the project, follow the steps below:
    ```http
    http://0.0.0.0:8011/docs
    ```
+
+**Launch tests**
+In order to launch test, after setting environment variables above, type in terminal
+```powershell
+pytest -v --disable-pytest-warnings
+```

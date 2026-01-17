@@ -2,7 +2,7 @@ import app.crud.crud as crud_operations
 from fastapi import Depends, APIRouter, Query
 from sqlmodel import Session
 from app.db.db import get_session
-from app.schemas.schemas import Chat, CreateMessage, Message, FullChat
+from app.schemas.schemas import Chat, CreateMessage, Message, FullChat, CreateChat
 from typing import Annotated
 
 chat_router = APIRouter()
@@ -10,13 +10,13 @@ chat_router = APIRouter()
 
 # Create chat
 @chat_router.post("/chats")
-def create_chat(title: str, session: Session = Depends(get_session)) -> Chat:
+def create_chat(title: CreateChat, session: Session = Depends(get_session)) -> Chat:
     return crud_operations.create_chat(title, session)
 
 
 # Send a message into chat
 @chat_router.post("/chats/{id}/messages")
-def send_message(id: int, text=CreateMessage, session: Session = Depends(get_session)) -> Message:
+def send_message(id: int, text: CreateMessage, session: Session = Depends(get_session)) -> Message:
     return crud_operations.create_message(id, text, session)
 
 

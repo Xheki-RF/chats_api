@@ -6,7 +6,7 @@ from fastapi import HTTPException
 
 
 def create_chat(title: schemas.CreateChat, session: Session) -> schemas.Chat:
-    new_chat = Chat(title=title)
+    new_chat = Chat(**title.model_dump())
 
     session.add(new_chat)
     session.commit()
@@ -16,7 +16,12 @@ def create_chat(title: schemas.CreateChat, session: Session) -> schemas.Chat:
 
 
 def create_message(id: int, text: schemas.CreateMessage, session: Session) -> schemas.Message:
-    new_message = Message(chat_id=id, text=text)
+    get_chat = session.exec(select(Chat).where(Chat.id == id)).first()
+
+    if not get_chat:
+        raise HTTPException(404)
+    
+    new_message = Message(chat_id=id, text=text.text)
 
     session.add(new_message)
     session.commit()
