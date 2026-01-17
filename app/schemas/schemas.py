@@ -14,11 +14,14 @@ class CreateChat(BaseModel):
             raise ValueError("title was not provided")
         else:
             return value
-        
+
 
 class Chat(CreateChat):
     id: int
     created_at: datetime
+
+    class Config:
+        from_attributes = True
 
 
 class CreateMessage(BaseModel):
@@ -38,3 +41,11 @@ class Message(CreateMessage):
     id: int
     chat_id: int
     created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class FullChat(BaseModel):
+    chat: Chat
+    messages: list[Message]
