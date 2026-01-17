@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
 from app.db.db import init_db
+from app.api.api_endpoints import chat_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -10,5 +11,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+
 if __name__ == "__main__":
     uvicorn.run(app="main:app", reload=True)
+
+app.include_router(chat_router)
