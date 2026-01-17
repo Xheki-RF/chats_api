@@ -1,7 +1,6 @@
 from sqlmodel import create_engine, SQLModel, Session
 import os
 from dotenv import load_dotenv
-from app.models.models import Chat, Message
 
 
 load_dotenv()
