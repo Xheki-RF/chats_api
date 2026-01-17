@@ -15,8 +15,6 @@ from app.models.models import Chat, Message
 # access to the values within the .ini file in use.
 config = context.config
 
-# load_dotenv(Path(__file__).resolve().parent.parent / "app" / ".env")
-
 DB_URL = os.getenv("DB_URL")
 config.set_main_option("sqlalchemy.url", DB_URL)
 
