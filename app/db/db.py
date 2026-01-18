@@ -9,7 +9,7 @@ DB_URL = os.getenv("DB_URL")
 
 if DB_URL is None:
     try: 
-        DB_URL = f"postgresql://{os.environ["POSTGRES_USER"]}:{os.environ["POSTGRES_PASSWORD"]}@localhost/{os.environ["POSTGRES_DB"]}"
+        DB_URL = f"postgresql://{os.environ['POSTGRES_USER']}:{os.environ['POSTGRES_PASSWORD']}@localhost/{os.environ['POSTGRES_DB']}"
     except:
         raise ValueError("DB_URL environment variable is not set!")
 

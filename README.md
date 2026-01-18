@@ -7,7 +7,7 @@ In order to launch the project, follow the steps below:
    - **POSTGRES_USER** - PostgreSQL user
    - **POSTGRES_PASSWORD** - PostgreSQL user's password
    - **POSTGRES_DB** - name of selected database
-   - **POSTGRES_PORT** - PostgreSQL port
+   - **POSTGRES_EXT_PORT** - PostgreSQL external port
 3) In terminal run the following commands:
    ```powershell
    docker compose build
@@ -15,11 +15,15 @@ In order to launch the project, follow the steps below:
    ```
 4) Open:
    ```http
-   http://0.0.0.0:8011/docs
+   http://127.0.0.1:8011/docs
    ```
 
 **Launch tests**
-In order to launch test, after setting environment variables above, type in terminal
+In order to launch tests, after setting environment variables above, type in terminal (we need to create environment and install all dependencies):
+
 ```powershell
+python -m venv venv
+python venv\Scripts\activate
+pip install -r requirements.txt
 pytest -v --disable-pytest-warnings
 ```
