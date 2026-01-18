@@ -18,7 +18,8 @@ In order to launch the project, follow the steps below:
    http://127.0.0.1:8011/docs
    ```
 
-**Launch tests**
+**Launch tests**  
+
 In order to launch tests, after setting environment variables above, type in terminal (we need to create environment and install all dependencies):
 
 ```powershell
