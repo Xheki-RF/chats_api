@@ -24,7 +24,7 @@ In order to launch tests, after setting environment variables above, type in ter
 
 ```powershell
 python -m venv venv
-python venv\Scripts\activate
+venv\Scripts\Activate
 pip install -r requirements.txt
 pytest -v --disable-pytest-warnings
 ```
